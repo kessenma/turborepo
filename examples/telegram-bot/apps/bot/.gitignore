@@ -1,0 +1,14 @@
+# Go related
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# OS related
+.DS_Store
+
+# Build artifacts
+/bot

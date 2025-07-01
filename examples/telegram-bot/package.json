@@ -1,0 +1,34 @@
+{
+  "name": "with-docker",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "dev": "turbo run dev",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+
+    "docker:network": "docker network inspect app_network >/dev/null 2>&1 || docker network create app_network",
+    "docker:up": "docker-compose -f docker-compose.yml up -d",
+    "docker:down": "docker-compose -f docker-compose.yml down",
+
+    "docker:prune:containers": "docker container prune -f",
+    "docker:prune:images": "docker image prune -af",
+    "docker:prune:volumes": "docker volume prune -f",
+    "docker:prune:all": "docker system prune -af --volumes",
+
+    "docker:reset": "docker-compose down --rmi all --volumes --remove-orphans && docker system prune -af --volumes"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "turbo": "^2.5.4"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=7.0.0"
+  },
+  "packageManager": "pnpm@10.10.0"
+}
